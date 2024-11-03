@@ -40,14 +40,12 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
                 if (!room.getOwner().equals(iClientChat.getUserName())) {
                     System.out.println("\nThis room is not yours only the owner and the admin can delete it.\n");
                     return false;
-                }
-                else {
+                } else {
                     // Check if the password is correct
                     if (!room.getPassword().equals(password)) {
                         System.out.println("\nWrong Password.\n");
                         return false;
-                    }
-                    else {
+                    } else {
                         roomsDataBase.remove(room);
                         System.out.println("\nThe room " + roomName + "has deleted successfully.\n");
                         return true;
@@ -61,15 +59,15 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
 
     @Override
     public Boolean signUp(String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
-        for (Room room : roomsDataBase){
+        for (Room room : roomsDataBase) {
             //check if the room exists
-            if (room.getRoomName().equals(roomName)){
+            if (room.getRoomName().equals(roomName)) {
                 //check if the user exists
-                if(!room.userExists(username)){
-                    User newUser = new User(firstName, lastName,username,password);
+                if (!room.userExists(username)) {
+                    User newUser = new User(firstName, lastName, username, password);
                     room.addRoomUser(newUser);
                 }
-                System.out.println("\nThe password of this room chat is :"+room.getPassword()+" you will need it to sign in later");
+                System.out.println("\nThe password of this room chat is :" + room.getPassword() + " you will need it to sign in later");
                 return true;
             }
         }
@@ -77,27 +75,26 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
     }
 
     @Override
-    public Boolean signIn(IClientChat iClientChat, String password,String roomName) throws RemoteException {
+    public Boolean signIn(IClientChat iClientChat, String password, String roomName) throws RemoteException {
 
         //check if the room exists
-        for (Room room : roomsDataBase){
-            if (room.getRoomName().equals(roomName)){
+        for (Room room : roomsDataBase) {
+            if (room.getRoomName().equals(roomName)) {
                 //check if the user belong to this chat
-                if(!room.userExists(iClientChat.getUserName())){
+                if (!room.userExists(iClientChat.getUserName())) {
                     System.out.println("\nThis user doesn't belong to this room.");
                     return false;
                 }
                 //check if the password of the room is correct
-                else if (!room.getPassword().equals(password)){
+                else if (!room.getPassword().equals(password)) {
                     System.out.println("\nWrong password.");
                 }
                 //the user exists
                 else {
                     //check if he online
-                    if(room.userOnline(iClientChat.getUserName())){
+                    if (room.userOnline(iClientChat.getUserName())) {
                         System.out.println("\nYou are already signed in.");
-                    }
-                    else {
+                    } else {
                         room.addOnlineUser(iClientChat.getUserName());
                         System.out.println("\nwelcome back to this chat.");
                     }
@@ -106,11 +103,11 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
             }
         }
         System.out.println("\nThis room doesn't exists.");
-        return  false;
+        return false;
     }
 
     @Override
-    public Boolean signOut(IClientChat iClientChat,String roomName) throws RemoteException {
+    public Boolean signOut(IClientChat iClientChat, String roomName) throws RemoteException {
         // Check if the room exists
         for (Room room : roomsDataBase) {
             if (room.getRoomName().equals(roomName)) {
@@ -137,22 +134,49 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
     }
 
     @Override
-    public List<Room> showRooms(IClientChat iClientChat) throws RemoteException {
-        return roomsDataBase;
+    public void showRooms() throws RemoteException {
+        if (roomsDataBase.isEmpty()) {
+            System.out.println("There is no room available, you can create one.");
+            return;
+        }
+        System.out.println("This is the available room:\n");
+        for (Room room : roomsDataBase) {
+            System.out.println(room.getRoomName());
+        }
     }
 
     @Override
-    public List<IClientChat> showClients(String roomName, IClientChat iClientChat) throws RemoteException {
-        return List.of();
+    public void showClients(String roomName) throws RemoteException {
+        //check if the room exists
+        for (Room room : roomsDataBase) {
+            if (room.getRoomName().equals(roomName)) {
+                room.printRoomUsers();
+            }
+        }
     }
 
     @Override
-    public void sendSingleMessage(String message, IClientChat iClientChat) throws RemoteException {
-
+    public void uniCastMessage(String message, IClientChat senderIClientChat, IClientChat receiverIClientChat) throws RemoteException {
+        String messageToSend = senderIClientChat.getUserName() + " : " + message;
+        receiverIClientChat.receiveMessage(messageToSend);
     }
 
     @Override
-    public void broadCastMessage(String message, IClientChat iClientChat) throws RemoteException {
-
+    public void multiCastMessage(String message, IClientChat iClientChat, List<IClientChat> iClientChats) throws RemoteException {
+        String messageToSend = iClientChat.getUserName() + " : " + message;
+        for (IClientChat receiver: iClientChats){
+            uniCastMessage(messageToSend, iClientChat,receiver);
+        }
     }
+
+    @Override
+    public void broadCastMessage(String message, String roomName, IClientChat iClientChat) throws RemoteException {
+        String messageToSend = iClientChat.getUserName() + " : " + message;
+        for (Room room: roomsDataBase){
+            if(room.getRoomName().equals(roomName)){
+                System.out.println("sdfdfsdf");
+            }
+        }
+    }
+
 }

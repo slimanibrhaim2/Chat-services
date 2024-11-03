@@ -60,6 +60,16 @@ public class Room {
         System.out.println("Room: "+ this.roomName+" Owned by the :"+this.owner + ".");
     }
 
+    public void printRoomUsers(){
+        if (roomUsers.isEmpty()){
+            System.out.println("There is no user in this room");
+            return;
+        }
+        for(User user: roomUsers){
+            System.out.println(user.getUserName());
+        }
+    }
+
 
     public String getRoomName() {
         return roomName;
