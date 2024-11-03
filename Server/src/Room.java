@@ -34,7 +34,6 @@ public class Room {
         }
         return false;
     }
-
     public Boolean userOnline(String name){
         for (String user: onlineUsers){
             //check if the user exists;
@@ -44,7 +43,6 @@ public class Room {
         }
         return false;
     }
-
     public Boolean removeOnlineUser(String name){
         for (String user: onlineUsers){
             //check if the user exists;
@@ -60,15 +58,14 @@ public class Room {
         System.out.println("Room: "+ this.roomName+" Owned by the :"+this.owner + ".");
     }
 
-    public void printRoomUsers(){
-        if (roomUsers.isEmpty()){
-            System.out.println("There is no user in this room");
-            return;
-        }
+    public List<String> getRoomUsers(){
+        List<String> users= new ArrayList<>();
         for(User user: roomUsers){
-            System.out.println(user.getUserName());
+            users.add(user.getUserName());
         }
+        return users;
     }
+
 
 
     public String getRoomName() {

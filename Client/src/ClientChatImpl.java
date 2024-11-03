@@ -4,6 +4,8 @@ import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
 
@@ -36,8 +38,33 @@ public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
         System.out.println(iServerChat.deleteRoom(roomName,password,iClientChat));
     }
 
-    public Boolean signUp(String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
-        return iServerChat.signUp(username, password, firstName, lastName, roomName);
+    public void showRooms() throws RemoteException {
+        List<String>result = iServerChat.showRooms();
+        if(result.isEmpty()){
+            System.out.println("There is no room available, you can create one.");
+            return;
+        }
+        System.out.println("This is the available room:");
+        for(String room: result){
+            System.out.println(room);
+        }
+    }
+
+    public void showClients(String roomName) throws RemoteException {
+        List<String>users= new ArrayList<>();
+        users= iServerChat.showClients(roomName);
+        if(users.isEmpty()){
+            System.out.println("This room hava no user it contains only the owner");
+            return;
+        }
+        System.out.println("This is the users in the room "+roomName);
+        for(String user: users){
+            System.out.println(user);
+        }
+    }
+    public void signUp(String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
+        String status= iServerChat.signUp(username, password, firstName, lastName, roomName);
+        System.out.println(status);
     }
 
     @Override

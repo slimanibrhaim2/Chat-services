@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98a6242a-20b2-4835-8b2d-d21a7dc593e1" name="Changes" comment="End Server implementation">
-      <change afterPath="$PROJECT_DIR$/Client/src/ChatClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/ClientChatImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/IClientChat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/IServerChat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/security.policy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/ChatServer.java" afterDir="false" />
+    <list default="true" id="98a6242a-20b2-4835-8b2d-d21a7dc593e1" name="Changes" comment="Implement most of the interface funtions and test them">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/IClientChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/IClientChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ChatClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/ClientChatImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ClientChatImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/IServerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/IServerChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/IServerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/IServerChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/ServerChatImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/ServerChatImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +58,7 @@
     "Application.ChatServer.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "lost",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Fifth Year/Distribution System/class/lab6/homework/Client/src",
     "settings.editor.selected.configurable": "inlay.hints"

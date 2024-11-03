@@ -1,9 +1,7 @@
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
 
@@ -19,7 +17,7 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
         // check if the room exists in database
         for (Room room : roomsDataBase) {
             if (room.getRoomName().equals(roomName)) {
-                String log ="user: " + iClientChat.getUserName()+" tried to create an exists room";
+                String log = "user: " + iClientChat.getUserName() + " tried to create an exists room";
                 logs.add(log);
                 return "The room name is not available, try another name";
             }
@@ -27,9 +25,9 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
         //creating a room and add it to the database;
         Room room = new Room(roomName, iClientChat.getUserName(), password);
         roomsDataBase.add(room);
-        String log ="user: " + iClientChat.getUserName()+" created a room : "+ roomName;
+        String log = "user: " + iClientChat.getUserName() + " created a room : " + roomName;
         logs.add(log);
-        return "Done, room added successfully" ;
+        return "Done, room added successfully";
     }
 
     @Override
@@ -42,48 +40,50 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
             if (room.getRoomName().equals(roomName)) {
                 // Check if the user is the owner
                 if (!room.getOwner().equals(iClientChat.getUserName())) {
-                    log= "user:" + iClientChat.getUserName()+"tried to delete room doesn't belong to him";
+                    log = "user:" + iClientChat.getUserName() + "tried to delete room doesn't belong to him";
                     logs.add(log);
                     return "This room is not yours, only the owner and the admin can delete it.";
-                }
-                else {
+                } else {
                     // Check if the password is correct
                     if (!room.getPassword().equals(password)) {
-                        log ="user:" + iClientChat.getUserName()+"tried to delete room doesn't with wrong password";
+                        log = "user:" + iClientChat.getUserName() + "tried to delete room doesn't with wrong password";
                         logs.add(log);
                         return "Error!, Wrong password.";
                     } else {
                         roomsDataBase.remove(room);
-                        log ="user: " + iClientChat.getUserName()+" has deleted his own room : "+roomName + " successfully";
+                        log = "user: " + iClientChat.getUserName() + " has deleted his own room : " + roomName + " successfully";
                         logs.add(log);
                         return "The room deleted successfully.";
                     }
                 }
             }
         }
-        log ="user:" + iClientChat.getUserName()+" tried to delete a room doesn't exists";
+        log = "user: " + iClientChat.getUserName() + " tried to delete a room doesn't exists";
         logs.add(log);
         return "The room doesn't exists";
     }
 
     @Override
-    public Boolean signUp(String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
+    public String signUp(String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
+        String log;
         for (Room room : roomsDataBase) {
             //check if the room exists
             if (room.getRoomName().equals(roomName)) {
                 //check if the user exists
-                if (!room.userExists(username)) {
-                    User newUser = new User(firstName, lastName, username, password);
-
-                    System.out.println("User added successfully");
-                    room.addRoomUser(newUser);
+                if(room.userExists(username)){
+                    log= "user: "+ username +"tried to sign up to room he exists in it.";
+                    return "You already in this room";
                 }
-                System.out.println("\nThe password of this room chat is :" + room.getPassword() + " you will need it to sign in later");
-                return true;
+                User newUser = new User(firstName, lastName, username, password);
+                room.addRoomUser(newUser);
+                log= "user: "+ username +" signed up to room "+ roomName;
+                logs.add(log);
+                return "User added successfully. \nThe password of this room chat is :" + room.getPassword() + " you will need it to sign in later";
             }
         }
-        System.out.println("The room doesn't exists");
-        return false;
+        log= "user: "+ username +"tried to sign up to room doesn't exists";
+        logs.add(log);
+        return "The room doesn't exists";
     }
 
     @Override
@@ -146,25 +146,27 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
     }
 
     @Override
-    public void showRooms() throws RemoteException {
-        if (roomsDataBase.isEmpty()) {
-            System.out.println("There is no room available, you can create one.");
-            return;
-        }
-        System.out.println("This is the available room:\n");
+    public List<String> showRooms() throws RemoteException {
+        List<String> result = new ArrayList<>();
         for (Room room : roomsDataBase) {
-            System.out.println(room.getRoomName());
+            result.add(room.getRoomName());
         }
+        String log = "Some user show the rooms";
+        logs.add(log);
+        return result;
     }
 
     @Override
-    public void showClients(String roomName) throws RemoteException {
-        //check if the room exists
+    public List<String> showClients(String roomName) throws RemoteException {
+        List<String> result = new ArrayList<>();
         for (Room room : roomsDataBase) {
             if (room.getRoomName().equals(roomName)) {
-                room.printRoomUsers();
+                result = room.getRoomUsers();
             }
         }
+        String  log = "some user show the client in room "+ roomName;
+        logs.add(log);
+        return result;
     }
 
     @Override
@@ -176,23 +178,23 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
     @Override
     public void multiCastMessage(String message, IClientChat iClientChat, List<IClientChat> iClientChats) throws RemoteException {
         String messageToSend = iClientChat.getUserName() + " : " + message;
-        for (IClientChat receiver: iClientChats){
-            uniCastMessage(messageToSend, iClientChat,receiver);
+        for (IClientChat receiver : iClientChats) {
+            uniCastMessage(messageToSend, iClientChat, receiver);
         }
     }
 
     @Override
     public void broadCastMessage(String message, String roomName, IClientChat iClientChat) throws RemoteException {
         String messageToSend = iClientChat.getUserName() + " : " + message;
-        for (Room room: roomsDataBase){
-            if(room.getRoomName().equals(roomName)){
+        for (Room room : roomsDataBase) {
+            if (room.getRoomName().equals(roomName)) {
                 System.out.println("sdfdfsdf");
             }
         }
     }
 
-    public void printLogs(){
-        for (String log: logs){
+    public void printLogs() {
+        for (String log : logs) {
             System.out.println(log);
         }
     }
