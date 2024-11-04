@@ -10,8 +10,9 @@ public class Room {
     private String roomName;
     private String owner;
     private String password;
-    private List<User> roomUsers = new ArrayList<>();
-    private List<String> onlineUsers= new ArrayList<>();
+//    private List<User> roomUsers = new ArrayList<>();
+    private List<IClientChat>allUsers= new ArrayList<>();
+    //    private List<String> onlineUsers= new ArrayList<>();
     private List<IClientChat> onlineClinets = new ArrayList<>();
 
 
@@ -21,47 +22,40 @@ public class Room {
         this.password = password;
     }
 
-    public void addRoomUser(User user){
-        roomUsers.add(user);
-    }
-    public void addOnlineUser(String user){
-        onlineUsers.add(user);
-    }
-    public void addOnlineClient(IClientChat client){
+//    public void addRoomUser(User user) {
+//        roomUsers.add(user);
+//    }
+public void addRoomUser(IClientChat user) {
+    allUsers.add(user);
+}
+
+    public void addOnlineClient(IClientChat client) {
         onlineClinets.add(client);
     }
-    public Boolean userExists(String newUser){
-        for (User user: roomUsers){
-            //check if the user exists;
-            if (user.getUserName().equals(newUser)){
-                 return true;
-            }
-        }
-        return false;
-    }
-    public Boolean userOnline(String name){
-        for (String user: onlineUsers){
-            //check if the user exists;
-            if (user.equals(name)){
-                return true;
-            }
-        }
-        return false;
-    }
-public Boolean clientOnline(IClientChat clientChat) throws RemoteException {
-    for (IClientChat client: onlineClinets){
+
+//    public Boolean userExists(String newUser) {
+//        for (User user : roomUsers) {
+//            //check if the user exists;
+//            if (user.getUserName().equals(newUser)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+public Boolean userExists(String newUser) throws RemoteException {
+    for (IClientChat user : allUsers) {
         //check if the user exists;
-        if (client.getUserName().equals(clientChat.getUserName())){
+        if (user.getUserName().equals(newUser)) {
             return true;
         }
     }
     return false;
 }
-    public Boolean removeOnlineUser(String name){
-        for (String user: onlineUsers){
+
+    public Boolean clientOnline(IClientChat clientChat) throws RemoteException {
+        for (IClientChat client : onlineClinets) {
             //check if the user exists;
-            if (user.equals(name)){
-                onlineUsers.remove(name);
+            if (client.getUserName().equals(clientChat.getUserName())) {
                 return true;
             }
         }
@@ -69,9 +63,9 @@ public Boolean clientOnline(IClientChat clientChat) throws RemoteException {
     }
 
     public Boolean removeOnlineClient(IClientChat clientChat) throws RemoteException {
-        for (IClientChat client: onlineClinets){
+        for (IClientChat client : onlineClinets) {
             //check if the user exists;
-            if (client.getUserName().equals(clientChat.getUserName())){
+            if (client.getUserName().equals(clientChat.getUserName())) {
                 onlineClinets.remove(client);
                 return true;
             }
@@ -79,18 +73,24 @@ public Boolean clientOnline(IClientChat clientChat) throws RemoteException {
         return false;
     }
 
-    public void printRoom(){
-        System.out.println("Room: "+ this.roomName+" Owned by the :"+this.owner + ".");
+    public void printRoom() {
+        System.out.println("Room: " + this.roomName + " Owned by the :" + this.owner + ".");
     }
 
-    public List<String> getRoomUsers(){
-        List<String> users= new ArrayList<>();
-        for(User user: roomUsers){
+//    public List<String> getRoomUsers() {
+//        List<String> users = new ArrayList<>();
+//        for (User user : roomUsers) {
+//            users.add(user.getUserName());
+//        }
+//        return users;
+//    }
+    public List<String> getRoomUsers() throws RemoteException {
+        List<String> users = new ArrayList<>();
+        for (IClientChat user : allUsers) {
             users.add(user.getUserName());
         }
         return users;
     }
-
 
 
     public String getRoomName() {
@@ -103,6 +103,10 @@ public Boolean clientOnline(IClientChat clientChat) throws RemoteException {
 
     public String getPassword() {
         return password;
+    }
+
+    public List<IClientChat> getAllUsers() {
+        return allUsers;
     }
 }
 

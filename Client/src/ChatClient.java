@@ -26,7 +26,7 @@ public class ChatClient {
 //        clientChat.deleteRoom("room4","1234",clientChat);
 //        clientChat.showRooms();
 //        clientChat.showClients("room133");
-        clientChat1.signUp("kheder","1234","ahmad","ali","room1");
+        clientChat1.signUp(clientChat1,"kheder","1234","ahmad","ali","room1");
 //        clientChat.showRooms();
         clientChat.showClients("room1");
         clientChat1.signIn(clientChat1,"1234","room1");
@@ -36,11 +36,7 @@ public class ChatClient {
         clientChat1.signOut(clientChat1,"room1");
 //         serverChat.signUp(userName,password,firstName,lastName,"room1");
         clientChat.uniCastMessage("helllo ",clientChat,clientChat1);
-
-
+        clientChat.broadCastMessage("broadcast","room1",clientChat);
     }
-
-
-
 
 }

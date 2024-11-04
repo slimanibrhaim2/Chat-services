@@ -10,18 +10,18 @@ import java.util.List;
 public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
 
 
-    private String firstName, lastName, userName,password;
+    private String firstName, lastName, userName, password;
     private IServerChat iServerChat;
 
     protected ClientChatImpl() throws RemoteException {
     }
 
-    public ClientChatImpl(String firstName , String lastName , String userName , String password , String server) throws RemoteException, MalformedURLException, NotBoundException {
+    public ClientChatImpl(String firstName, String lastName, String userName, String password, String server) throws RemoteException, MalformedURLException, NotBoundException {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
-        this.iServerChat = (IServerChat) Naming.lookup("rmi://"+server+":9999/ChatSvc");
+        this.iServerChat = (IServerChat) Naming.lookup("rmi://" + server + ":9999/ChatSvc");
     }
 
     public void addRoom(String roomName, String password, IClientChat iClientChat) throws RemoteException {
@@ -35,53 +35,56 @@ public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
     }
 
     public void deleteRoom(String roomName, String password, IClientChat iClientChat) throws RemoteException {
-        System.out.println(iServerChat.deleteRoom(roomName,password,iClientChat));
+        System.out.println(iServerChat.deleteRoom(roomName, password, iClientChat));
     }
 
     public void showRooms() throws RemoteException {
-        List<String>result = iServerChat.showRooms();
-        if(result.isEmpty()){
+        List<String> result = iServerChat.showRooms();
+        if (result.isEmpty()) {
             System.out.println("There is no room available, you can create one.");
             return;
         }
         System.out.println("This is the available room:");
-        for(String room: result){
+        for (String room : result) {
             System.out.println(room);
         }
     }
 
     public void showClients(String roomName) throws RemoteException {
-        List<String>users= new ArrayList<>();
-        users= iServerChat.showClients(roomName);
-        if(users.isEmpty()){
+        List<String> users = new ArrayList<>();
+        users = iServerChat.showClients(roomName);
+        if (users.isEmpty()) {
             System.out.println("This room hava no user it contains only the owner");
             return;
         }
-        System.out.println("This is the users in the room "+roomName);
-        for(String user: users){
+        System.out.println("This is the users in the room " + roomName);
+        for (String user : users) {
             System.out.println(user);
         }
     }
-    public void signUp(String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
-        String status= iServerChat.signUp(username, password, firstName, lastName, roomName);
+
+    public void signUp(IClientChat clientChat, String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
+        String status = iServerChat.signUp(clientChat, username, password, firstName, lastName, roomName);
         System.out.println(status);
     }
 
     public void signIn(IClientChat iClientChat, String password, String roomName) throws RemoteException {
-        String status= iServerChat.signIn(iClientChat,password,roomName);
+        String status = iServerChat.signIn(iClientChat, password, roomName);
         System.out.println(status);
     }
 
-    public void signOut(IClientChat iClientChat, String roomName) throws RemoteException{
-        String status= iServerChat.signOut(iClientChat,roomName);
+    public void signOut(IClientChat iClientChat, String roomName) throws RemoteException {
+        String status = iServerChat.signOut(iClientChat, roomName);
         System.out.println(status);
     }
 
     public void uniCastMessage(String message, IClientChat senderIClientChat, IClientChat receiverIClientChat) throws RemoteException {
-        iServerChat.uniCastMessage(message,senderIClientChat,receiverIClientChat);
+        iServerChat.uniCastMessage(message, senderIClientChat, receiverIClientChat);
     }
 
-
+    public void broadCastMessage(String message, String roomName, IClientChat iClientChat) throws RemoteException {
+        iServerChat.broadCastMessage(message,roomName,iClientChat);
+    }
 
         @Override
     public void receiveMessage(String message) throws RemoteException {

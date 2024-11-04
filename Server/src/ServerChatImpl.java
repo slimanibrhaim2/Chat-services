@@ -64,7 +64,7 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
     }
 
     @Override
-    public String signUp(String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
+    public String signUp(IClientChat clientChat,String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
         String log;
         for (Room room : roomsDataBase) {
             //check if the room exists
@@ -74,8 +74,9 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
                     log= "user: "+ username +"tried to sign up to room he exists in it.";
                     return "You already in this room";
                 }
-                User newUser = new User(firstName, lastName, username, password);
-                room.addRoomUser(newUser);
+//                User newUser = new User(firstName, lastName, username, password);
+//                room.addRoomUser(newUser);
+                room.addRoomUser(clientChat);
                 log= "user: "+ username +" signed up to room "+ roomName;
                 logs.add(log);
                 return "User added successfully. \nThe password of this room chat is :" + room.getPassword() + " you will need it to sign in later";
@@ -108,12 +109,12 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
                 // User exists and password is correct
                 else {
                     // Check if user is already signed in
-                    if (room.userOnline(iClientChat.getUserName())) {
+                    if (room.clientOnline(iClientChat)) {
                         log = "user: " + iClientChat.getUserName() + " attempted to sign in, but was already online in room " + roomName;
                         logs.add(log);
                         return "You are already signed in.";
                     } else {
-                        room.addOnlineUser(iClientChat.getUserName());
+                        room.addOnlineClient(iClientChat);
                         log = "user: " + iClientChat.getUserName() + " successfully signed in to room " + roomName;
                         logs.add(log);
                         room.addOnlineClient(iClientChat);
@@ -140,14 +141,14 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
                     return "This user doesn't belong to this room.";
                 }
                 // Check if the user is currently online in the room
-                else if (!room.userOnline(iClientChat.getUserName())) {
+                else if (!room.clientOnline(iClientChat)) {
                     log = "user: " + iClientChat.getUserName() + " tried to sign out from room " + roomName + " but was not signed in.";
                     logs.add(log);
                     return "You are not signed in.";
                 }
                 // If user is online, proceed to sign out
                 else {
-                    room.removeOnlineUser(iClientChat.getUserName());
+                    room.removeOnlineClient(iClientChat);
                     log = "user: " + iClientChat.getUserName() + " successfully signed out from room " + roomName;
                     logs.add(log);
                     return "You have successfully signed out.";
@@ -202,7 +203,7 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
         String messageToSend = iClientChat.getUserName() + " : " + message;
         for (Room room : roomsDataBase) {
             if (room.getRoomName().equals(roomName)) {
-                System.out.println("sdfdfsdf");
+                multiCastMessage(message,iClientChat,room.getAllUsers());
             }
         }
     }

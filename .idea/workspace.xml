@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98a6242a-20b2-4835-8b2d-d21a7dc593e1" name="Changes" comment="Implement most of the interface funtions and test them">
+    <list default="true" id="98a6242a-20b2-4835-8b2d-d21a7dc593e1" name="Changes" comment="Implement all the interface functions and test them">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ChatClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/ClientChatImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ClientChatImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/IServerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/IServerChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/IServerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/IServerChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/ServerChatImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/ServerChatImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730671083470</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Implement all the interface functions and test them">
+      <option name="closed" value="true" />
+      <created>1730710082552</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730710082552</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -155,6 +164,7 @@
     <MESSAGE value="Implement most of the interface funtions" />
     <MESSAGE value="End Server implementation" />
     <MESSAGE value="Implement most of the interface funtions and test them" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement most of the interface funtions and test them" />
+    <MESSAGE value="Implement all the interface functions and test them" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement all the interface functions and test them" />
   </component>
 </project>
