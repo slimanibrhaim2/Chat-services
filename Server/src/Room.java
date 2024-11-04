@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,6 +12,7 @@ public class Room {
     private String password;
     private List<User> roomUsers = new ArrayList<>();
     private List<String> onlineUsers= new ArrayList<>();
+    private List<IClientChat> onlineClinets = new ArrayList<>();
 
 
     public Room(String roomName, String owner, String password) {
@@ -24,6 +26,9 @@ public class Room {
     }
     public void addOnlineUser(String user){
         onlineUsers.add(user);
+    }
+    public void addOnlineClient(IClientChat client){
+        onlineClinets.add(client);
     }
     public Boolean userExists(String newUser){
         for (User user: roomUsers){
@@ -43,11 +48,31 @@ public class Room {
         }
         return false;
     }
+public Boolean clientOnline(IClientChat clientChat) throws RemoteException {
+    for (IClientChat client: onlineClinets){
+        //check if the user exists;
+        if (client.getUserName().equals(clientChat.getUserName())){
+            return true;
+        }
+    }
+    return false;
+}
     public Boolean removeOnlineUser(String name){
         for (String user: onlineUsers){
             //check if the user exists;
             if (user.equals(name)){
                 onlineUsers.remove(name);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Boolean removeOnlineClient(IClientChat clientChat) throws RemoteException {
+        for (IClientChat client: onlineClinets){
+            //check if the user exists;
+            if (client.getUserName().equals(clientChat.getUserName())){
+                onlineClinets.remove(client);
                 return true;
             }
         }

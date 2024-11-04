@@ -67,7 +67,23 @@ public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
         System.out.println(status);
     }
 
-    @Override
+    public void signIn(IClientChat iClientChat, String password, String roomName) throws RemoteException {
+        String status= iServerChat.signIn(iClientChat,password,roomName);
+        System.out.println(status);
+    }
+
+    public void signOut(IClientChat iClientChat, String roomName) throws RemoteException{
+        String status= iServerChat.signOut(iClientChat,roomName);
+        System.out.println(status);
+    }
+
+    public void uniCastMessage(String message, IClientChat senderIClientChat, IClientChat receiverIClientChat) throws RemoteException {
+        iServerChat.uniCastMessage(message,senderIClientChat,receiverIClientChat);
+    }
+
+
+
+        @Override
     public void receiveMessage(String message) throws RemoteException {
         System.out.println("received " + message);
     }

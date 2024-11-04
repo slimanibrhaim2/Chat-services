@@ -9,9 +9,9 @@ public interface IServerChat extends Remote {
 
     public String signUp(String username, String password, String firstName, String lastName, String roomName) throws RemoteException;
 
-    public Boolean signIn(IClientChat iClientChat, String password, String roomName) throws RemoteException;
+    public String signIn(IClientChat iClientChat, String password, String roomName) throws RemoteException;
 
-    public Boolean signOut(IClientChat iClientChat, String roomName) throws RemoteException;
+    public String signOut(IClientChat iClientChat, String roomName) throws RemoteException;
 
     public List<String> showRooms() throws RemoteException;
 

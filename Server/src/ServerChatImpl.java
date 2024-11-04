@@ -86,63 +86,77 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
         return "The room doesn't exists";
     }
 
-    @Override
-    public Boolean signIn(IClientChat iClientChat, String password, String roomName) throws RemoteException {
 
-        //check if the room exists
+    @Override
+    public String signIn(IClientChat iClientChat, String password, String roomName) throws RemoteException {
+        String log;
         for (Room room : roomsDataBase) {
+            // Check if the room exists
             if (room.getRoomName().equals(roomName)) {
-                //check if the user belong to this chat
-                if (!room.userExists(iClientChat.getUserName())) {
-                    System.out.println("\nThis user doesn't belong to this room.");
-                    return false;
+                // Check if the user belongs to this room
+                if (room.userExists(iClientChat.getUserName()).equals(false)) {
+                    log = "user: " + iClientChat.getUserName() + " tried to sign in to a room they do not belong to.";
+                    logs.add(log);
+                    return "This user doesn't belong to this room.";
                 }
-                //check if the password of the room is correct
+                // Check if the room password is correct
                 else if (!room.getPassword().equals(password)) {
-                    System.out.println("\nWrong password.");
+                    log = "user: " + iClientChat.getUserName() + " attempted sign in with the wrong password to room " + roomName;
+                    logs.add(log);
+                    return "Wrong password.";
                 }
-                //the user exists
+                // User exists and password is correct
                 else {
-                    //check if he online
+                    // Check if user is already signed in
                     if (room.userOnline(iClientChat.getUserName())) {
-                        System.out.println("\nYou are already signed in.");
+                        log = "user: " + iClientChat.getUserName() + " attempted to sign in, but was already online in room " + roomName;
+                        logs.add(log);
+                        return "You are already signed in.";
                     } else {
                         room.addOnlineUser(iClientChat.getUserName());
-                        System.out.println("\nwelcome back to this chat.");
+                        log = "user: " + iClientChat.getUserName() + " successfully signed in to room " + roomName;
+                        logs.add(log);
+                        room.addOnlineClient(iClientChat);
+                        return "Welcome back to this chat.";
                     }
-                    return true;
                 }
             }
         }
-        System.out.println("\nThis room doesn't exists.");
-        return false;
+        log = "user: " + iClientChat.getUserName() + " tried to sign in to a room that doesn't exist.";
+        logs.add(log);
+        return "The room doesn't exist.";
     }
 
     @Override
-    public Boolean signOut(IClientChat iClientChat, String roomName) throws RemoteException {
-        // Check if the room exists
+    public String signOut(IClientChat iClientChat, String roomName) throws RemoteException {
+        String log;
         for (Room room : roomsDataBase) {
+            // Check if the room exists
             if (room.getRoomName().equals(roomName)) {
                 // Check if the user belongs to this chat
                 if (!room.userExists(iClientChat.getUserName())) {
-                    System.out.println("\nThis user doesn't belong to this room.");
-                    return false;
+                    log = "user: " + iClientChat.getUserName() + " tried to sign out from a room they do not belong to.";
+                    logs.add(log);
+                    return "This user doesn't belong to this room.";
                 }
                 // Check if the user is currently online in the room
                 else if (!room.userOnline(iClientChat.getUserName())) {
-                    System.out.println("\nYou are not signed in.");
-                    return false;
+                    log = "user: " + iClientChat.getUserName() + " tried to sign out from room " + roomName + " but was not signed in.";
+                    logs.add(log);
+                    return "You are not signed in.";
                 }
                 // If user is online, proceed to sign out
                 else {
                     room.removeOnlineUser(iClientChat.getUserName());
-                    System.out.println("\nYou have successfully signed out.");
-                    return true;
+                    log = "user: " + iClientChat.getUserName() + " successfully signed out from room " + roomName;
+                    logs.add(log);
+                    return "You have successfully signed out.";
                 }
             }
         }
-        System.out.println("\nThis room doesn't exist.");
-        return false;
+        log = "user: " + iClientChat.getUserName() + " attempted to sign out from a room that doesn't exist.";
+        logs.add(log);
+        return "The room doesn't exist.";
     }
 
     @Override
