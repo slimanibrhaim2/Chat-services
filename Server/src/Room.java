@@ -105,8 +105,12 @@ public Boolean userExists(String newUser) throws RemoteException {
         return password;
     }
 
-    public List<IClientChat> getAllUsers() {
-        return allUsers;
+    public List<String> getAllUsers() throws RemoteException {
+        List<String> resault= new ArrayList<>();
+        for(IClientChat user: allUsers){
+            resault.add(user.getUserName());
+        }
+        return resault;
     }
 }
 

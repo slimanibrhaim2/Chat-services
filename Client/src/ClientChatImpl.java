@@ -62,8 +62,15 @@ public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
             System.out.println(user);
         }
     }
+    public void register(String firstName, String lastName, String userName, String password, IClientChat iClientChat) throws RemoteException {
+        iServerChat.register(firstName,lastName,userName,password,iClientChat);
+    }
 
-    public void signUp(IClientChat clientChat, String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
+    public void logIn(String userName, String password) throws RemoteException {
+        iServerChat.logIn(userName,password);
+    }
+
+        public void signUp(IClientChat clientChat, String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
         String status = iServerChat.signUp(clientChat, username, password, firstName, lastName, roomName);
         System.out.println(status);
     }
@@ -78,22 +85,32 @@ public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
         System.out.println(status);
     }
 
-    public void uniCastMessage(String message, IClientChat senderIClientChat, IClientChat receiverIClientChat) throws RemoteException {
-        iServerChat.uniCastMessage(message, senderIClientChat, receiverIClientChat);
+    public void uniCastMessage(String message, IClientChat senderIClientChat, String userName) throws RemoteException {
+        iServerChat.uniCastMessage(message, senderIClientChat, userName);
     }
 
     public void broadCastMessage(String message, String roomName, IClientChat iClientChat) throws RemoteException {
         iServerChat.broadCastMessage(message,roomName,iClientChat);
     }
 
-        @Override
-    public void receiveMessage(String message) throws RemoteException {
-        System.out.println("received " + message);
+    @Override
+    public void receiveMessage(String message, String username) throws RemoteException {
+        System.out.println(message);
     }
 
     @Override
     public String getUserName() throws RemoteException {
         return this.userName;
+    }
+
+    @Override
+    public boolean checkPassword(String pass) {
+        if (this.password.equals(pass)){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 

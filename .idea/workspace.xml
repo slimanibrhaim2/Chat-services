@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98a6242a-20b2-4835-8b2d-d21a7dc593e1" name="Changes" comment="Implement all the interface functions and test them">
+    <list default="true" id="98a6242a-20b2-4835-8b2d-d21a7dc593e1" name="Changes" comment="finish the chat without gui">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/AddRoom.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/AddRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ChatClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/ClientChatImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ClientChatImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/IClientChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/IClientChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/IServerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/IServerChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/IClientChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/IClientChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/IServerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/IServerChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/ServerChatImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/ServerChatImpl.java" afterDir="false" />
@@ -61,7 +66,7 @@
     &quot;git-widget-placeholder&quot;: &quot;lost&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Fifth Year/Distribution System/class/lab6/homework/Client/src&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -142,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730710082552</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="finish the chat without gui">
+      <option name="closed" value="true" />
+      <created>1730711414756</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1730711414757</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -165,6 +178,7 @@
     <MESSAGE value="End Server implementation" />
     <MESSAGE value="Implement most of the interface funtions and test them" />
     <MESSAGE value="Implement all the interface functions and test them" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement all the interface functions and test them" />
+    <MESSAGE value="finish the chat without gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish the chat without gui" />
   </component>
 </project>
