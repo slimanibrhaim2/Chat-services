@@ -92,7 +92,7 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
                 if (user.checkPassword(password)) {
                     String log = "User: " + userName + " logged in successfully.";
                     logs.add(log);
-                    return "Login successful. Welcome back, " + userName + "!";
+                    return "Login successful. Welcome back";
                 } else {
                     String log = "User: " + userName + " failed to log in due to incorrect password.";
                     logs.add(log);
@@ -266,6 +266,15 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
                 break;
             }
         }
+    }
+
+    public IClientChat findUserByUsername(String username) throws RemoteException {
+        for (IClientChat user : userDatabase) {
+            if (user.getUserName().equals(username)) {
+                return user;
+            }
+        }
+        return null; // Return null if the user is not found
     }
 
     public void printLogs() {

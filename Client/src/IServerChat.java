@@ -27,5 +27,5 @@ public interface IServerChat extends Remote {
 
     public void broadCastMessage(String message, String roomName,IClientChat iClientChat) throws RemoteException;
 
-
+    public IClientChat findUserByUsername(String userName);
 }

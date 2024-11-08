@@ -24,14 +24,16 @@ public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
         this.iServerChat = (IServerChat) Naming.lookup("rmi://" + server + ":9999/ChatSvc");
     }
 
-    public void addRoom(String roomName, String password, IClientChat iClientChat) throws RemoteException {
+    public String addRoom(String roomName, String password, IClientChat iClientChat) throws RemoteException {
 //        if (iServerChat.addRoom(roomName, password, iClientChat).equals("success")) {
 //            System.out.println("Done, room added successfully");
 //            return ;
 //        }
 //        System.out.println("The room name is not available, try another name");
 //        return ;
-        System.out.println(iServerChat.addRoom(roomName, password, iClientChat));
+        String result = iServerChat.addRoom(roomName, password, iClientChat);
+        System.out.println(result);
+        return result;
     }
 
     public void deleteRoom(String roomName, String password, IClientChat iClientChat) throws RemoteException {
@@ -62,15 +64,19 @@ public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
             System.out.println(user);
         }
     }
+
     public void register(String firstName, String lastName, String userName, String password, IClientChat iClientChat) throws RemoteException {
         iServerChat.register(firstName,lastName,userName,password,iClientChat);
     }
 
-    public void logIn(String userName, String password) throws RemoteException {
-        iServerChat.logIn(userName,password);
+    public Boolean logIn(String userName, String password) throws RemoteException {
+
+        String result= iServerChat.logIn(userName,password);
+        System.out.println(result);
+        return result.equals("Login successful. Welcome back");
     }
 
-        public void signUp(IClientChat clientChat, String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
+    public void signUp(IClientChat clientChat, String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
         String status = iServerChat.signUp(clientChat, username, password, firstName, lastName, roomName);
         System.out.println(status);
     }
@@ -98,20 +104,31 @@ public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
         System.out.println(message);
     }
 
+
+    public IClientChat findUserByUsername(String username) throws RemoteException {
+        return iServerChat.findUserByUsername(username);
+    }
+    @Override
+    public boolean checkPassword(String pass) {
+        return this.password.equals(pass);
+    }
+
     @Override
     public String getUserName() throws RemoteException {
         return this.userName;
     }
-
     @Override
-    public boolean checkPassword(String pass) {
-        if (this.password.equals(pass)){
-            return true;
-        }
-        else {
-            return false;
-        }
+    public String getPassword() throws RemoteException {
+        return this.password;
+    }
+    @Override
+    public String getFirstName() throws RemoteException {
+        return this.firstName;
     }
 
+    @Override
+    public String getLastName() throws RemoteException {
+        return this.lastName;
+    }
 
 }
