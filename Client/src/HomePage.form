@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="HomePage">
+  <grid id="27dc6" binding="HomePagePanel" layout-manager="GridLayoutManager" row-count="10" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="15" left="15" bottom="15" right="15"/>
+    <constraints>
+      <xy x="20" y="20" width="1085" height="571"/>
+    </constraints>
+    <properties>
+      <background color="-12342864"/>
+      <font name="Segoe UI" size="18" style="0"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="93264" class="javax.swing.JButton" binding="btnAddRoom">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <text value="Add Room"/>
+        </properties>
+      </component>
+      <component id="983b1" class="javax.swing.JButton" binding="btnShowRooms">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <text value="Show All Rooms"/>
+        </properties>
+      </component>
+      <component id="d5525" class="javax.swing.JButton" binding="btnDeleteRoom">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="136" height="46"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <text value="Delete Room"/>
+        </properties>
+      </component>
+      <component id="eea6b" class="javax.swing.JButton" binding="btnShowClients">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <text value="Show All Clients"/>
+        </properties>
+      </component>
+      <component id="a379e" class="javax.swing.JButton" binding="btnSignOut">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <text value="Sign Out From Room"/>
+        </properties>
+      </component>
+      <component id="ee1a5" class="javax.swing.JButton" binding="btnSignIn">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <text value="Sign In To Room "/>
+        </properties>
+      </component>
+      <component id="ac37c" class="javax.swing.JButton" binding="btnSignUp">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <text value="Sign Up To Enter A Room"/>
+        </properties>
+      </component>
+      <component id="341c0" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="0" height="46"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <font name="Segoe UI" size="36" style="0"/>
+          <foreground color="-16777216"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="a3b1a" class="javax.swing.JTextArea" binding="messagesArea">
+        <constraints>
+          <grid row="0" column="2" row-span="7" col-span="7" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <text value="The Messages:&#10;"/>
+        </properties>
+      </component>
+      <component id="496d5" class="javax.swing.JButton" binding="btnUnicast">
+        <constraints>
+          <grid row="8" column="7" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Send"/>
+        </properties>
+      </component>
+      <component id="aeefe" class="javax.swing.JButton" binding="btnBroadCast">
+        <constraints>
+          <grid row="9" column="7" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Send"/>
+        </properties>
+      </component>
+      <vspacer id="8a87e">
+        <constraints>
+          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <preferred-size width="25" height="14"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <component id="4d3ca" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16737360"/>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-16777216"/>
+          <text value="Send Message To Frind"/>
+        </properties>
+      </component>
+      <component id="d25b5" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-16777216"/>
+          <text value="Send Message To Room"/>
+        </properties>
+      </component>
+      <component id="150f7" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-16777216"/>
+          <text value="Send To:"/>
+        </properties>
+      </component>
+      <component id="b5b25" class="javax.swing.JTextField" binding="tfReciever">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-16777216"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="19163" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-16777216"/>
+          <text value="Message: "/>
+        </properties>
+      </component>
+      <component id="1dfe1" class="javax.swing.JTextField" binding="tfUnicastMessage">
+        <constraints>
+          <grid row="8" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-16777216"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="af0c5" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-16777216"/>
+          <text value="Room: "/>
+        </properties>
+      </component>
+      <component id="37040" class="javax.swing.JTextField" binding="tfRoom">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-16777216"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="66201" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="9" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-16777216"/>
+          <text value="Message: "/>
+        </properties>
+      </component>
+      <component id="2124a" class="javax.swing.JTextField" binding="tfBroadCastMessge">
+        <constraints>
+          <grid row="9" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-16777216"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

@@ -34,15 +34,14 @@ public class LogIn extends JDialog {
                 }
 
                 try {
-                    ClientChatImpl clientChat = new ClientChatImpl("admin","admin","admid","1234","localhost");
-                    boolean result= clientChat.logIn(userName, password);
-                    if (result){
+                    ClientChatImpl clientChat = new ClientChatImpl("admin", "admin", "admin", "1234", "localhost");
+                    String result = clientChat.logIn(userName, password);
+                    if (result.equals("Login successful. Welcome back")) {
                         JOptionPane.showMessageDialog(LoginPanel, "Login successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                        dispose();
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(LoginPanel, "Login Field!", "Field", JOptionPane.INFORMATION_MESSAGE);
-//                        dispose();
+                        dispose(); // Close the login dialog
+                        new HomePage(parent).setVisible(true); // Open the HomePage
+                    } else {
+                        JOptionPane.showMessageDialog(LoginPanel, result, "Field", JOptionPane.INFORMATION_MESSAGE);
                     }
 
                 } catch (RemoteException | MalformedURLException | NotBoundException ex) {

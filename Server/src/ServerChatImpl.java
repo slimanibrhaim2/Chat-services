@@ -24,6 +24,7 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
         }
         // Create a new room and add it to the database
         Room room = new Room(roomName, iClientChat.getUserName(), password);
+        room.addRoomUser( iClientChat);
         roomsDataBase.add(room);
         String log = "User: " + iClientChat.getUserName() + " successfully created the room: " + roomName;
         logs.add(log);
@@ -108,7 +109,7 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
     }
 
     @Override
-    public String signUp(IClientChat clientChat, String username, String password, String firstName, String lastName, String roomName) throws RemoteException {
+    public String signUp(IClientChat clientChat, String username, String firstName, String lastName, String roomName) throws RemoteException {
         String log;
         for (Room room : roomsDataBase) {
             // Check if the room exists
@@ -161,7 +162,7 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
                         room.addOnlineClient(iClientChat);
                         log = "User: " + iClientChat.getUserName() + " successfully signed in to room " + roomName;
                         logs.add(log);
-                        return "Welcome back to the chat.";
+                        return "Sign in successful";
                     }
                 }
             }
@@ -194,7 +195,7 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
                     room.removeOnlineClient(iClientChat);
                     log = "User: " + iClientChat.getUserName() + " successfully signed out from room " + roomName;
                     logs.add(log);
-                    return "You have successfully signed out.";
+                    return "Sign out successful";
                 }
             }
         }

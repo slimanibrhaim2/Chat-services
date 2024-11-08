@@ -11,7 +11,7 @@ public interface IServerChat extends Remote {
 
     public String logIn (String userName, String password)throws RemoteException;
 
-    public String signUp(IClientChat clientChat,String username, String password, String firstName, String lastName, String roomName) throws RemoteException;
+    public String signUp(IClientChat clientChat,String username, String firstName, String lastName, String roomName) throws RemoteException;
 
     public String signIn(IClientChat iClientChat, String password, String roomName) throws RemoteException;
 

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="DeleteRoom">
+  <grid id="27dc6" binding="DeletePanel" layout-manager="GridLayoutManager" row-count="10" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
+    <constraints>
+      <xy x="20" y="20" width="470" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-9719640"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="46664" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-15067344"/>
+          <text value="Username"/>
+        </properties>
+      </component>
+      <component id="92d56" class="javax.swing.JTextField" binding="tfUsername">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-15067344"/>
+        </properties>
+      </component>
+      <component id="b8924" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-15067344"/>
+          <text value="Room Name"/>
+        </properties>
+      </component>
+      <component id="1dd1e" class="javax.swing.JTextField" binding="tfRoomName">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-15067344"/>
+        </properties>
+      </component>
+      <component id="5e466" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-15067344"/>
+          <text value="Room Password"/>
+        </properties>
+      </component>
+      <component id="65dd3" class="javax.swing.JPasswordField" binding="pfPassword">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Segoe UI" size="18" style="0"/>
+          <foreground color="-15067344"/>
+        </properties>
+      </component>
+      <component id="17233" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16737360"/>
+          <font name="Segoe UI" size="48" style="1"/>
+          <foreground color="-15067344"/>
+          <text value="Delete Room"/>
+        </properties>
+      </component>
+      <vspacer id="86560">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="3a060">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="bb2f7">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="d2529">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="bc86">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="deabd" class="javax.swing.JButton" binding="btnCancel">
+        <constraints>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Cancel"/>
+        </properties>
+      </component>
+      <component id="421e8" class="javax.swing.JButton" binding="btnDelete">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Delete"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
