@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 public class HomePage extends JFrame {
@@ -21,12 +23,14 @@ public class HomePage extends JFrame {
     private JTextField tfRoom;
     private JPanel HomePagePanel;
 
-    public HomePage(JFrame parent) {
+
+    public HomePage(ClientChatImpl clientChat) {
         setTitle("Home Page");
         setContentPane(HomePagePanel);
         setSize(new Dimension(1200, 500));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
 
         messagesArea.setEditable(false);
 
@@ -88,11 +92,16 @@ public class HomePage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String message = tfUnicastMessage.getText().trim();
                 String receiver = tfReciever.getText().trim();
-                if (message.isEmpty() || receiver.isEmpty()){
+                if (message.isEmpty() || receiver.isEmpty()) {
                     JOptionPane.showMessageDialog(HomePage.this, "Please enter a message and a receiver.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else{
-                    tfUnicastMessage.setText("");
+                } else {
+                    try {
+                        clientChat.uniCastMessage(message, clientChat, receiver);
+                        messagesArea.append("To " + receiver + ": " + message + "\n");
+                        tfUnicastMessage.setText("");
+                    } catch (RemoteException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
         });
@@ -102,18 +111,20 @@ public class HomePage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String message = tfBroadCastMessge.getText().trim();
                 if (!message.isEmpty()) {
-                    // Implement broadcast message sending logic here
-                    tfBroadCastMessge.setText("");
+                    try {
+                        clientChat.broadCastMessage(message, String.valueOf(tfRoom), clientChat);
+                        messagesArea.append("BroadCast : " + message + "\n");
+                        tfBroadCastMessge.setText("");
+                    } catch (RemoteException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else {
                     JOptionPane.showMessageDialog(HomePage.this, "Please enter a message to broadcast.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
-
         setVisible(true);
-
     }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

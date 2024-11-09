@@ -4,32 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98a6242a-20b2-4835-8b2d-d21a7dc593e1" name="Changes" comment="gui with register and login and addroom">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/DeleteRoom.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/DeleteRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/FirstPage.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/FirstPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/HomePage.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/HomePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/ShowClients.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/ShowClients.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/ShowRooms.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/ShowRooms.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/SignIn.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/SignIn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/SignOut.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/SignOut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/SignUp.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/SignUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="98a6242a-20b2-4835-8b2d-d21a7dc593e1" name="Changes" comment="GUI Done&#10;---">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/AddRoom.form" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/AddRoom.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ChatClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/ClientChatImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/ClientChatImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/IServerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/IServerChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/FirstPage.form" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/FirstPage.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/FirstPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/FirstPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/HomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/LogIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/LogIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/IServerChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/IServerChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/ServerChatImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/ServerChatImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,11 +69,12 @@
     "Application.SignIn.executor": "Run",
     "Application.SignOut.executor": "Run",
     "Application.SignUp.executor": "Run",
+    "Application.Unnamed (1).executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "false",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "184",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "false",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "313",
     "git-widget-placeholder": "lost",
     "ignore.preview.features.used": "true",
@@ -112,7 +95,7 @@
       <recent name="D:\Fifth Year\Distribution System\class\lab6\homework\Client\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Unnamed (1)">
     <configuration name="AddRoom" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AddRoom" />
       <module name="Client" />
@@ -134,10 +117,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed (1)" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FirstPage" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.Unnamed (1)" />
+      <item itemvalue="Application.AddRoom" />
+      <item itemvalue="Application.FirstPage" />
+      <item itemvalue="Application.Register" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.FirstPage" />
         <item itemvalue="Application.AddRoom" />
+        <item itemvalue="Application.FirstPage" />
         <item itemvalue="Application.Register" />
       </list>
     </recent_temporary>
@@ -239,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731054948711</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="GUI Done&#10;---">
+      <option name="closed" value="true" />
+      <created>1731094569642</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1731094569642</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -265,6 +274,7 @@
     <MESSAGE value="finish the chat without gui" />
     <MESSAGE value="final touch before starting gui" />
     <MESSAGE value="gui with register and login and addroom" />
-    <option name="LAST_COMMIT_MESSAGE" value="gui with register and login and addroom" />
+    <MESSAGE value="GUI Done&#10;---" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI Done&#10;---" />
   </component>
 </project>

@@ -81,7 +81,7 @@ public class ServerChatImpl extends UnicastRemoteObject implements IServerChat {
         logs.add(log);
 
         // Return a success message
-        return "Registration successful. Welcome, " + firstName + "!";
+        return "Registration successful.";
     }
 
     @Override

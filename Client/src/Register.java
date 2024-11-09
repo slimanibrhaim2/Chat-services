@@ -47,9 +47,15 @@ public class Register extends JDialog {
 
                 try {
                     clientChat = new ClientChatImpl(firstName, lastName, userName, password, "localhost");
-                    clientChat.register(firstName, lastName, userName, password, clientChat);
-                    JOptionPane.showMessageDialog(registerPanel, "Registration successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
+                    String status= clientChat.register(firstName, lastName, userName, password, clientChat);
+                    if (status.equals("Registration successful.")){
+                        JOptionPane.showMessageDialog(registerPanel, "Registration successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(registerPanel, status,"Error", JOptionPane.INFORMATION_MESSAGE);
+
+                    }
                 } catch (RemoteException | NotBoundException | MalformedURLException ex) {
                     JOptionPane.showMessageDialog(registerPanel, "Error during registration: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -63,7 +69,7 @@ public class Register extends JDialog {
             }
         });
 
-        setVisible(true);
+//        setVisible(true);
     }
 
     public static void main(String[] args) {

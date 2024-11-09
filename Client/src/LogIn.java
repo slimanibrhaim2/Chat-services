@@ -35,11 +35,13 @@ public class LogIn extends JDialog {
 
                 try {
                     ClientChatImpl clientChat = new ClientChatImpl("admin", "admin", "admin", "1234", "localhost");
+                    IClientChat iClientChat = clientChat.findUserByUsername(userName);
+                    ClientChatImpl clientChat1= new ClientChatImpl(iClientChat.getFirstName(),iClientChat.getLastName(), iClientChat.getUserName(),iClientChat.getPassword(),"localhost");
                     String result = clientChat.logIn(userName, password);
                     if (result.equals("Login successful. Welcome back")) {
                         JOptionPane.showMessageDialog(LoginPanel, "Login successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
                         dispose(); // Close the login dialog
-                        new HomePage(parent).setVisible(true); // Open the HomePage
+                        new HomePage(clientChat1).setVisible(true); // Open the HomePage
                     } else {
                         JOptionPane.showMessageDialog(LoginPanel, result, "Field", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -57,15 +59,15 @@ public class LogIn extends JDialog {
             }
         });
 
-        setVisible(true);
+//        setVisible(true);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new LogIn(null);
-            }
-        });
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+////                new LogIn(null);
+//            }
+//        });
+//    }
 }

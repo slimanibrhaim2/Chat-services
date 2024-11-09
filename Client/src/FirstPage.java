@@ -28,7 +28,6 @@ public class FirstPage extends JFrame {
                 new Register(FirstPage.this).setVisible(true);
             }
         });
-
         setVisible(true);
     }
 

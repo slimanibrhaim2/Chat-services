@@ -1,7 +1,6 @@
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -63,8 +62,8 @@ public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
 //        }
     }
 
-    public void register(String firstName, String lastName, String userName, String password, IClientChat iClientChat) throws RemoteException {
-        iServerChat.register(firstName,lastName,userName,password,iClientChat);
+    public String register(String firstName, String lastName, String userName, String password, IClientChat iClientChat) throws RemoteException {
+        return  iServerChat.register(firstName,lastName,userName,password,iClientChat);
     }
 
     public String logIn(String userName, String password) throws RemoteException {
@@ -104,7 +103,6 @@ public class ClientChatImpl extends UnicastRemoteObject implements IClientChat {
     public void receiveMessage(String message, String username) throws RemoteException {
         System.out.println(message);
     }
-
 
     public IClientChat findUserByUsername(String username) throws RemoteException {
         return iServerChat.findUserByUsername(username);
